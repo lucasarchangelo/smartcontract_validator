@@ -1,0 +1,38 @@
+{
+  "name": "blockchain_validator",
+  "version": "1.0.0",
+  "description": "This repo will be used to create batch script that is going to validade Blockchain Classes to see if users could deploy the correct contract on the testnets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy_mumbai": "npx hardhat deploy --network mumbai",
+    "validate_csv": "npx hardhat run ./scripts/validate.ts --network localhost"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasarchangelo/blockchain_validator.git"
+  },
+  "keywords": [
+    "blockchain",
+    "validators",
+    "nodejs",
+    "solidity",
+    "hardhat"
+  ],
+  "author": "Lucas Ramos Archangelo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucasarchangelo/blockchain_validator/issues"
+  },
+  "homepage": "https://github.com/lucasarchangelo/blockchain_validator#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.4",
+    "@openzeppelin/contracts": "^5.0.2",
+    "csv-parse": "^5.5.5",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.21.0",
+    "hardhat-deploy": "^0.11.45",
+    "hardhat-deploy-ethers": "^0.4.1"
+  }
+}
