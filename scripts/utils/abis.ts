@@ -1,5 +1,5 @@
 export class Confg {
-    _abi: string = "";
+    contractName: string = "";
     _validate: Array<string> = [];
 }
 
@@ -9,11 +9,11 @@ export interface IIndexable {
 
 export const exerciseConfig: IIndexable = {
     exercise1: {
-        _abi: "",
+        contractName: "Test1",
         _validate: ["owner", "readStore1"]
     },
     exercise2: {
-        _abi: "",
+        contractName: "Test2",
         _validate: ["owner", "readStore2"]
     }
 }

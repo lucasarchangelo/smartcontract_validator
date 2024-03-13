@@ -21,9 +21,7 @@ type WorkshopAnswer = {
 };
 
 async function main() {
-  const signers = await ethers.getSigners();
   const csvFilePath = path.resolve(__dirname, '../CSVS/workshopResults.csv');
-  const headers = [{contractName: 'Test1', exercise: 'exercise1'}, {contractName: 'Test2', exercise: 'exercise2'}];
   const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
 
   parse(fileContent, {
@@ -32,17 +30,14 @@ async function main() {
   }, async (error, result: WorkshopAnswer[]) => {
 
     for await (const record of result) {
-      
-      
-      for await ( const header of headers) {
-        for await (const method of exerciseConfig[header.exercise]._validate) {
-          const test = (await ethers.getContractAt(header.contractName, (record as any)[header.exercise]) as any);
-          console.log(`Validating ${method} for ${header.exercise}`);
+      for await (const exercise of Object.keys(exerciseConfig)) {
+        for await (const method of exerciseConfig[exercise]._validate) {
+          const test = (await ethers.getContractAt(exerciseConfig[exercise].contractName, (record as any)[exercise]) as any);
+          console.log(`Validating ${method} for ${exercise}`);
           const result = await test[method]();
-          console.log(`Result of ${method} for ${header.exercise} is ${result}`);
+          console.log(`Result of ${method} for ${exercise} is ${result}`);
         }
       }
-
     }
 
     if (error) {
