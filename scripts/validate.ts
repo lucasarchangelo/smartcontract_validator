@@ -1,41 +1,56 @@
 import { ethers } from "hardhat";
-
+import { Contract } from "ethers";
 import { exerciseConfig, callFunctionByName } from "./utils/configs";
-import { getCSVObject } from "./reader";
+import { getCSVObject, WorkshopAnswer, WorkshopFeedback } from "./csv/reader";
+import { generateCSV } from "./csv/writer";
 
-
-async function validateOwner(contractInstance: any, walletAddress: string) {
-  const owner = await contractInstance.owner();
-  if(owner !== walletAddress) {
-    console.log("csvAnswerss: ", owner, walletAddress);
-    console.log(`Owner isn't correct`);
+async function validateOwner(contractInstance: Contract, walletAddress: string, resultItem: WorkshopFeedback) {
+  try {
+    const owner = await contractInstance.owner();
+    resultItem.owner = owner === walletAddress;
+  } catch (error) {
+    resultItem.owner = false;
   }
 }
 
-async function iterateExerciseConfig(record: any) {
-  for await (const exercise of Object.keys(exerciseConfig)) {
-    const contractInstance = (await ethers.getContractAt(exerciseConfig[exercise].contractName, record[exercise]));
-    if(exerciseConfig[exercise].isOwnable) {
-      validateOwner(contractInstance, record.walletAddress);
-    }
-    validateExercise(exercise, contractInstance);
-  }
-}
-
-async function validateExercise(exercise: string, contractInstance: any) {
+async function validateExercise(exercise: string, contractInstance: Contract, resultItem: WorkshopFeedback) {
   for (const method of exerciseConfig[exercise].validate) {
     console.log(`Validating ${method} for ${exercise}`);
-    const contractResponse = await callFunctionByName(contractInstance, method);
-    console.log(`contractResponse of ${method} for ${exercise} is ${contractResponse}`);
+    try {
+      const contractResponse = await callFunctionByName(contractInstance, method);
+      console.log(`contractResponse of ${method} for ${exercise} is ${contractResponse}`);
+      resultItem[exercise] = true;
+    } catch (error) {
+      resultItem[exercise] = false;
+    }
+
+    // console.log("Result item from validadeExercise ", resultItem);
+  }
+}
+
+async function iterateExerciseConfig(record: WorkshopAnswer, resultItem: WorkshopFeedback) {
+  for await (const exercise of Object.keys(exerciseConfig)) {
+    const contractInstance = await ethers.getContractAt(exerciseConfig[exercise].contractName, record[exercise]);
+    if (exerciseConfig[exercise].isOwnable) {
+      await validateOwner(contractInstance, record.walletAddress, resultItem);
+    }
+    await validateExercise(exercise, contractInstance, resultItem);
   }
 }
 
 async function main() {
-    const csvAnswers = await getCSVObject();
+  const csvAnswers = await getCSVObject();
+  const result: WorkshopFeedback[] = [];
 
-    for await (const record of csvAnswers) {
-      iterateExerciseConfig(record);
-    }
+  for await (const record of csvAnswers) {
+    let resultItem: WorkshopFeedback = new WorkshopFeedback();
+    resultItem.name = record.name;
+    resultItem.walletAddress = record.walletAddress;
+    await iterateExerciseConfig(record, resultItem);
+    result.push(resultItem);
+  }
+  
+  generateCSV(result);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
