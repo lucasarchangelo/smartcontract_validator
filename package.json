@@ -30,6 +30,7 @@
     "@nomicfoundation/hardhat-verify": "^2.0.4",
     "@openzeppelin/contracts": "^5.0.2",
     "csv-parse": "^5.5.5",
+    "csvtojson": "^2.0.10",
     "dotenv": "^16.4.5",
     "hardhat": "^2.21.0",
     "hardhat-deploy": "^0.11.45",
