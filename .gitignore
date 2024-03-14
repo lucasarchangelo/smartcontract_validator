@@ -4,6 +4,7 @@ node_modules
 # Hardhat files
 /cache
 /artifacts
+/deployments
 
 # TypeChain files
 /typechain
@@ -12,3 +13,6 @@ node_modules
 # solidity-coverage files
 /coverage
 /coverage.json
+
+# npm package manager
+package-lock.json

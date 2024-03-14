@@ -1,18 +1,5 @@
 import csvToJson from "csvtojson";
-
-
-export interface WorkshopAnswer {
-    name: string;
-    walletAddress: string;
-    [key: string]: string;
-}
-
-export class WorkshopFeedback {
-    name: string = "";
-    walletAddress: string = ""
-    owner: boolean = false;
-    [key: string]: string | boolean | number;
-}
+import { WorkshopAnswer } from "../utils/configs";
 
 export async function getCSVObject(): Promise<WorkshopAnswer[]> {
     const recipients = await csvToJson({

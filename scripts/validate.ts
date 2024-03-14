@@ -1,8 +1,14 @@
 import { ethers } from "hardhat";
 import { Contract } from "ethers";
-import { exerciseConfig, callFunctionByName } from "./utils/configs";
-import { getCSVObject, WorkshopAnswer, WorkshopFeedback } from "./csv/reader";
+import { exerciseConfig, callFunctionByName, WorkshopAnswer, WorkshopFeedback } from "./utils/configs";
+import { getCSVObject } from "./csv/reader";
 import { generateCSV } from "./csv/writer";
+
+function checkContractResponse(contractResponse: string | number, expected: string | number | undefined) {
+  if (expected && contractResponse.toString() !== expected.toString()) {
+    throw new Error(`Contract response ${contractResponse} is not equal to expected ${expected}`);
+  }
+}
 
 async function validateOwner(contractInstance: Contract, walletAddress: string, resultItem: WorkshopFeedback) {
   try {
@@ -14,17 +20,15 @@ async function validateOwner(contractInstance: Contract, walletAddress: string, 
 }
 
 async function validateExercise(exercise: string, contractInstance: Contract, resultItem: WorkshopFeedback) {
-  for (const method of exerciseConfig[exercise].validate) {
-    console.log(`Validating ${method} for ${exercise}`);
+  for (const validate of exerciseConfig[exercise].validate) {
     try {
-      const contractResponse = await callFunctionByName(contractInstance, method);
-      console.log(`contractResponse of ${method} for ${exercise} is ${contractResponse}`);
+      const contractResponse = await callFunctionByName(contractInstance, validate.method);
+      checkContractResponse(contractResponse, validate.expected);
       resultItem[exercise] = true;
     } catch (error) {
+      console.log(`Error validating ${validate.method} for ${exercise}: ${error}`);
       resultItem[exercise] = false;
     }
-
-    // console.log("Result item from validadeExercise ", resultItem);
   }
 }
 
@@ -43,14 +47,16 @@ async function main() {
   const result: WorkshopFeedback[] = [];
 
   for await (const record of csvAnswers) {
+    console.info(`Validating user ${record.name} with wallet ${record.walletAddress}`);
     let resultItem: WorkshopFeedback = new WorkshopFeedback();
     resultItem.name = record.name;
     resultItem.walletAddress = record.walletAddress;
     await iterateExerciseConfig(record, resultItem);
     result.push(resultItem);
   }
-  
-  generateCSV(result);
+
+  console.info("Validation finished")
+  console.info(generateCSV(result));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
