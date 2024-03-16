@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy_mumbai": "npx hardhat deploy --network mumbai",
-    "validate_csv": "npx hardhat run ./scripts/validate.ts --network localhost"
+    "validate_csv": "npx hardhat run src/validate.ts --network localhost"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "hardhat": "^2.21.0",
     "hardhat-deploy": "^0.11.45",
     "hardhat-deploy-ethers": "^0.4.1",
-    "json-2-csv": "^5.5.0"
+    "json-2-csv": "^5.5.0",
+    "prettier": "^3.2.5"
   }
 }
