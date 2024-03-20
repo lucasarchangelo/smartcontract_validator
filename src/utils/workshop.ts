@@ -1,6 +1,6 @@
 import { WorkshopAnswer, WorkshopFeedback } from "../types";
 
 export const workshopFeedbackFromAnswer = (answer: WorkshopAnswer): WorkshopFeedback => {
-  const { name, address } = answer;
-  return { name, address, hasOwner: false };
+
+  return { name: answer["Email Address"], address: answer["Endereço Account1 da Carteira"], hasOwner: false };
 };

@@ -9,11 +9,12 @@ import 'hardhat-deploy-ethers';
 
 const MNEMONIC = process.env.MNEMONIC;
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL;
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 const MATIC_RPC_URL = process.env.MATIC_RPC_URL;
 const POLYGONSCANAPIKEY = process.env.POLYGONSCANAPIKEY;
 
 const config: HardhatUserConfig = {
-  solidity: '0.8.24',
+  solidity: '0.8.19',
   networks: {
     hardhat: {
       chainId: 31337
@@ -24,6 +25,13 @@ const config: HardhatUserConfig = {
         mnemonic: MNEMONIC,
       },
       chainId: 80001
+    },
+    sepolia: {
+      url: SEPOLIA_RPC_URL !== undefined ? SEPOLIA_RPC_URL : '',
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
+      chainId: 11155111
     },
     matic: {
       url: MATIC_RPC_URL !== undefined ? MATIC_RPC_URL : '',

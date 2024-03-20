@@ -16,13 +16,14 @@ const checkContractResponse = (
 const validateOwner = async (
   contract: Contract,
   walletAddress: string,
+  exercise: string,
   feedback: WorkshopFeedback,
 ) => {
   try {
     const owner = await contract.owner();
-    feedback.hasOwner = owner === walletAddress;
+    feedback[exercise] = owner === walletAddress;
   } catch (error) {
-    feedback.hasOwner = false;
+    feedback[exercise] = false;
   }
 };
 
@@ -39,19 +40,28 @@ const validateExercise = async (
     } catch (error) {
       console.log(`Error validating ${expectation.method} for ${exercise}: ${error}`);
       feedback[exercise] = false;
+      return;
     }
   }
 };
 
 export const validateContract = async (answer: WorkshopAnswer, feedback: WorkshopFeedback) => {
   for await (const exercise of Object.keys(exerciseConfig)) {
-    const contractInstance = await ethers.getContractAt(
-      exerciseConfig[exercise].contractName,
-      answer[exercise],
-    );
-    if (exerciseConfig[exercise].isOwnable) {
-      await validateOwner(contractInstance, answer.address, feedback);
+    if (answer[exercise]) {
+      const contractInstance = await ethers.getContractAt(
+        exerciseConfig[exercise].contractName,
+        answer[exercise],
+      );
+      if (exerciseConfig[exercise].isOwnable) {
+        await validateOwner(contractInstance, answer.address, exercise, feedback);
+      } else {
+        feedback[exercise] = true;
+      }
+      if (feedback[exercise]) {
+        await validateExercise(exercise, contractInstance, feedback);
+      }
+    } else {
+      feedback[exercise] = false;
     }
-    await validateExercise(exercise, contractInstance, feedback);
   }
 };

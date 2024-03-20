@@ -6,6 +6,7 @@ export type ExerciseConfig = Record<string, ValidationConfig>;
 export interface ValidationConfig {
   contractName: string;
   isOwnable: boolean;
+  network: string;
   expectations: MethodExpectation[];
 }
 
@@ -27,6 +28,6 @@ export interface Wallet {
   address: string;
 }
 
-export type WorkshopAnswer = Wallet & Record<string, string>;
 
-export type WorkshopFeedback = Wallet & Ownable & Record<string, string | boolean | number>;
+export type WorkshopAnswer = Wallet & Record<string, string>;
+export type WorkshopFeedback = Wallet & Record<string, string | boolean | number>;

@@ -1,14 +1,28 @@
 import { ExerciseConfig } from "./types";
 
 export const exerciseConfig: ExerciseConfig = {
-  exercise1: {
-    contractName: "Test1",
-    isOwnable: true,
-    expectations: [{ method: "readStore1", expected: 0 }],
+  "Endereço Smart Contract Register": {
+    contractName: "Register",
+    isOwnable: false,
+    network: "sepolia",
+    expectations: [{ method: "getInfo" }],
   },
-  exercise2: {
-    contractName: "Test2",
-    isOwnable: true,
-    expectations: [{ method: "readStore2" }],
+  "Endereço do Smart Contract RegisterAccess": {
+    contractName: "RegisterAccess",
+    isOwnable: false,
+    network: "sepolia",
+    expectations: [{ method: "listInfo" }],
+  },
+  "Endereço do Token": {
+    contractName: "Token",
+    isOwnable: false,
+    network: "sepolia",
+    expectations: [{ method: "decimals", expected: 2 }],
+  },
+  "Endereço do TokenShop": {
+    contractName: "TokenShop",
+    isOwnable: false,
+    network: "sepolia",
+    expectations: [{ method: "getChainlinkDataFeedLatestAnswer" }],
   },
 };

@@ -6,10 +6,11 @@ import { validateContract } from "./validator";
 
 async function runValidation() {
   const csvAnswers = await getCSVObject();
+  console.log(csvAnswers);
   const result: WorkshopFeedback[] = [];
 
   for await (const answer of csvAnswers) {
-    console.info(`Validating user ${answer.name} with wallet ${answer.address}`);
+    console.info(`Validating user ${answer["Email Address"]} with wallet ${answer["Endereço Account1 da Carteira"]}`);
     let feedback = workshopFeedbackFromAnswer(answer);
 
     await validateContract(answer, feedback);
