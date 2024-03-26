@@ -1,3 +1,5 @@
+import hre from "hardhat";
+
 import { ethers } from "hardhat";
 import { Contract } from "ethers";
 import { WorkshopAnswer, WorkshopFeedback } from "./types";
@@ -47,21 +49,23 @@ const validateExercise = async (
 
 export const validateContract = async (answer: WorkshopAnswer, feedback: WorkshopFeedback) => {
   for await (const exercise of Object.keys(exerciseConfig)) {
-    if (answer[exercise]) {
-      const contractInstance = await ethers.getContractAt(
-        exerciseConfig[exercise].contractName,
-        answer[exercise],
-      );
-      if (exerciseConfig[exercise].isOwnable) {
-        await validateOwner(contractInstance, answer.address, exercise, feedback);
+    if (exerciseConfig[exercise].network === hre.network.name) {
+      if (answer[exercise]) {
+        const contractInstance = await ethers.getContractAt(
+          exerciseConfig[exercise].contractName,
+          answer[exercise],
+        );
+        if (exerciseConfig[exercise].isOwnable) {
+          await validateOwner(contractInstance, answer.address, exercise, feedback);
+        } else {
+          feedback[exercise] = true;
+        }
+        if (feedback[exercise]) {
+          await validateExercise(exercise, contractInstance, feedback);
+        }
       } else {
-        feedback[exercise] = true;
+        feedback[exercise] = false;
       }
-      if (feedback[exercise]) {
-        await validateExercise(exercise, contractInstance, feedback);
-      }
-    } else {
-      feedback[exercise] = false;
     }
   }
 };

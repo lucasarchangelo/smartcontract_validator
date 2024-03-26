@@ -25,4 +25,10 @@ export const exerciseConfig: ExerciseConfig = {
     network: "sepolia",
     expectations: [{ method: "getChainlinkDataFeedLatestAnswer" }],
   },
+  "Endereço CCIPTokenSenderFujiSepolia": {
+    contractName: "CCIPTokenSenderFujiSepolia",
+    isOwnable: false,
+    network: "fuji",
+    expectations: [{ method: "owner" }],
+  },
 };

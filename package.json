@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy_mumbai": "npx hardhat deploy --network mumbai",
-    "validate_csv": "npx hardhat run src/index.ts --network sepolia"
+    "validate_csv_sepolia": "npx hardhat run src/index.ts --network sepolia",
+    "validate_csv_fuji": "npx hardhat run src/index.ts --network fuji"
   },
   "repository": {
     "type": "git",

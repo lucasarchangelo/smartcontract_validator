@@ -10,6 +10,7 @@ import 'hardhat-deploy-ethers';
 const MNEMONIC = process.env.MNEMONIC;
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL;
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
+const FUJI_RPC_URL = process.env.FUJI_RPC_URL;
 const MATIC_RPC_URL = process.env.MATIC_RPC_URL;
 const POLYGONSCANAPIKEY = process.env.POLYGONSCANAPIKEY;
 
@@ -32,6 +33,13 @@ const config: HardhatUserConfig = {
         mnemonic: MNEMONIC,
       },
       chainId: 11155111
+    },
+    fuji: {
+      url: FUJI_RPC_URL !== undefined ? FUJI_RPC_URL : '',
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
+      chainId: 43113
     },
     matic: {
       url: MATIC_RPC_URL !== undefined ? MATIC_RPC_URL : '',
