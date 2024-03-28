@@ -35,7 +35,17 @@ To use this validator, follow these steps:
 
    For each CSV column that you want to validate, create a `ValidationConfig` object in `config.ts`.
 
-5. Place the CSV file you want to validate in the root directory of the repository, using the name `Bootcamp_apply.csv`.
+5. Create an .env file. You can use the `.env.example` as an example or add the following information to your own:
+
+   ```
+      MNEMONIC="YOUR MNEMONIC HERE"
+      MUMBAI_RPC_URL="MUMBAI RPC URL"
+      SEPOLIA_RPC_URL="SEPOLIA RPC URL"
+      FUJI_RPC_URL="FUJI RPC URL"
+      MATIC_RPC_URL="MATIC RPC URL"
+   ```
+
+6. Place the CSV file you want to validate in the root directory of the repository, using the name `Bootcamp_apply.csv`.
 
 ## Usage
 
