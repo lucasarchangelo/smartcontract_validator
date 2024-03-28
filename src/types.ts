@@ -1,6 +1,10 @@
 export type Result = string | number;
+export type Method = {
+  name: string;
+  args?: string[];
+};
 
-export type Functions = Record<string, () => Promise<Result>>;
+export type Functions = Record<string, (...args: string[]) => Promise<Result>>;
 export type ExerciseConfig = Record<string, ValidationConfig>;
 
 export interface ValidationConfig {
@@ -11,7 +15,7 @@ export interface ValidationConfig {
 }
 
 export type MethodExpectation = {
-  method: string;
+  method: Method;
   expected?: Result;
 };
 

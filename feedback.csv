@@ -1,14 +1,14 @@
-name,address,hasOwner,Endereço Smart Contract Register,Endereço do Smart Contract RegisterAccess,Endereço do Token,Endereço do TokenShop,Endereço CCIPTokenSenderFujiSepolia
-email@gmail.com,,false,false,false,false,false,false
-gui.agro@gmail.com,0xA501Da9bAc8879150C3f7BCd0AcB4937652d6155,false,true,true,true,true,true
-mbreno.dev@gmail.com,0x775e1fBE7CD9f9c04f311D3988A5f974Dd63b250,false,true,true,true,true,true
-marcel.brunetto@gmail.com,0xE4f930C753B75Bcfe6217cCc85CCD9Bc90A94089,false,true,true,true,true,true
-marco.a.igomes@gmail.com,0x6007C5FB3301053f9B6136a9C21174bb703bfabA,false,true,true,true,true,true
-palmeida@lab.com.pt,0xB07b022E6Ed14C9A2Be8b1Eb1d3fC32f9fF1b6be,false,true,true,true,true,true
-schiesari51@gmail.com,0xc5e82e0f94e1ccbdbf3e7934177fbd915079defa,false,true,true,true,true,true
-ricardo.walter@gmail.com,0x63280f6b92286e2C5415a8C0d8588c6542cA7331,false,true,true,true,true,true
-madureiradaniel600@gmail.com,0xF40584Fa10d17A5A0570783a2DCd62F0B790827D,false,true,true,true,true,true
-cleverson-silva@uol.com.br,0x9Ab6B9D8F7Ca44c0e522B8Ac829D798Df4B55240,false,true,true,true,true,true
-erjonathan@gmail.com,0xB5DDBDb327434d039796b91188Fb1e70BC02C7B9,false,true,false,false,false,false
-flaviocgarcia@gmail.com,0xCbD076690494E5514C82257E0DEb7eE97f520bb5,false,true,false,false,false,false
-emanueloliveira38@yahoo.com.br,0x30c6BB91Cf4A9588C46b3E76353a2E5aE8A46c27,false,true,false,false,false,false
+name,address,hasOwner,Endereço Smart Contract Register,Endereço do Smart Contract RegisterAccess,Endereço do Token,Endereço do TokenShop,Endereço PhotoAlbum,Endereço CrossChainPriceNFT,Endereço CrossDestinationMinter,Endereço do Smart Contract WeatherFunctions,Endereço do Smart Contract TemperatureFunctions,Endereço NFT Runners,Endereço do Smart Contract GettingStartedFunctionsConsumer,Endereço CrossSourceMinter,Endereço CCIPTokenSenderFujiSepolia
+email@gmail.com,,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+gui.agro@gmail.com,0xA501Da9bAc8879150C3f7BCd0AcB4937652d6155,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+mbreno.dev@gmail.com,0x775e1fBE7CD9f9c04f311D3988A5f974Dd63b250,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+marcel.brunetto@gmail.com,0xE4f930C753B75Bcfe6217cCc85CCD9Bc90A94089,false,true,true,true,true,false,false,false,false,false,false,false,false,true
+marco.a.igomes@gmail.com,0x6007C5FB3301053f9B6136a9C21174bb703bfabA,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+palmeida@lab.com.pt,0xB07b022E6Ed14C9A2Be8b1Eb1d3fC32f9fF1b6be,false,true,true,true,true,true,true,true,false,true,true,true,true,true
+schiesari51@gmail.com,0xc5e82e0f94e1ccbdbf3e7934177fbd915079defa,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+ricardo.walter@gmail.com,0x63280f6b92286e2C5415a8C0d8588c6542cA7331,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+madureiradaniel600@gmail.com,0xF40584Fa10d17A5A0570783a2DCd62F0B790827D,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+cleverson-silva@uol.com.br,0x9Ab6B9D8F7Ca44c0e522B8Ac829D798Df4B55240,false,true,true,true,true,true,true,true,true,true,true,true,true,true
+erjonathan@gmail.com,0xB5DDBDb327434d039796b91188Fb1e70BC02C7B9,false,true,false,false,false,false,false,false,false,false,false,false,false,false
+flaviocgarcia@gmail.com,0xCbD076690494E5514C82257E0DEb7eE97f520bb5,false,true,false,false,false,false,false,false,false,false,false,false,false,false
+emanueloliveira38@yahoo.com.br,0x30c6BB91Cf4A9588C46b3E76353a2E5aE8A46c27,false,true,false,false,false,false,false,false,false,false,false,false,false,false

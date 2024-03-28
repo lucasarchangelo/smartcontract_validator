@@ -1,10 +1,11 @@
-import { Functions, Result } from "../types";
+import { Functions, Method, Result } from "../types";
 
-export async function callFunctionByName(target: Functions, functionName: string): Promise<Result> {
-  const func = target[functionName];
+export async function callFunctionByName(target: Functions, fun: Method): Promise<Result> {
+  const func = target[fun.name];
   if (func) {
+    if(fun.args) return func(...fun.args);
     return func();
   } else {
-    throw new Error(`Function ${functionName} not found`);
+    throw new Error(`Function ${fun.name} not found`);
   }
 }

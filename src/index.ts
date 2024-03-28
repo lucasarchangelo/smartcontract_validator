@@ -17,7 +17,6 @@ async function runValidation() {
   for await (const answer of csvAnswers) {
     console.info(`Validating user ${answer["Email Address"]} with wallet ${answer["Endereço Account1 da Carteira"]}`);
     let feedback = result.find((item) => item.name === answer["Email Address"]) || workshopFeedbackFromAnswer(answer);
-    console.info("Feedback: ", feedback);
     await validateContract(answer, feedback);
     if (hre.network.name !== "fuji") {
       result.push(feedback);

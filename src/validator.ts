@@ -40,7 +40,7 @@ const validateExercise = async (
       checkContractResponse(contractResponse, expectation.expected);
       feedback[exercise] = true;
     } catch (error) {
-      console.log(`Error validating ${expectation.method} for ${exercise}: ${error}`);
+      console.log(`Error validating ${expectation.method.name} for ${exercise}: ${error}`);
       feedback[exercise] = false;
       return;
     }
