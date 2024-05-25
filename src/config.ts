@@ -1,82 +1,76 @@
 import { ExerciseConfig } from "./types";
 
 export const exerciseConfig: ExerciseConfig = {
-  "Endereço Smart Contract Register": {
+  "Register Smart Contract Address": {
     contractName: "Register",
     isOwnable: false,
     network: "sepolia",
     expectations: [{ method: { name: "getInfo" } }],
   },
-  "Endereço do Smart Contract RegisterAccess": {
+  "RegisterAccess Smart Contract Address": {
     contractName: "RegisterAccess",
     isOwnable: false,
     network: "sepolia",
     expectations: [{ method: { name: "listInfo" } }],
   },
-  "Endereço do Token": {
+  "Token Address": {
     contractName: "Token",
     isOwnable: false,
     network: "sepolia",
     expectations: [{ method: { name: "decimals" }, expected: 2 }],
   },
-  "Endereço do TokenShop": {
+  "TokenShop Address": {
     contractName: "TokenShop",
     isOwnable: false,
     network: "sepolia",
     expectations: [{ method: { name: "getChainlinkDataFeedLatestAnswer" } }],
   },
-  "Endereço PhotoAlbum": {
-    contractName: "PhotoAlbum",
+  "TransferUSDCBasic Address": {
+    contractName: "TransferUSDCBasic",
     isOwnable: false,
-    network: "sepolia",
-    expectations: [{ method: { name: "checkUpkeep", args:["0x"] } }],
+    network: "fuji",
+    expectations: [{ method: { name: "allowanceUsdc" } }],
   },
-  "Endereço CrossChainPriceNFT": {
-    contractName: "CrossChainPriceNFT",
+  // "Flower Address": {
+  //   contractName: "Flower",
+  //   isOwnable: false,
+  //   network: "sepolia",
+  //   expectations: [{ method: { name: "tokenURI", args:[0] } }],
+  // },
+  // "CrossDestinationMinter address": {
+  //   contractName: "CrossDestinationMinter",
+  //   isOwnable: false,
+  //   network: "sepolia",
+  //   expectations: [{ method: { name: "getRouter"} }],
+  // },
+  "MintOnSepolia Transaction ID": {
+    contractName: "CrossSourceMinter",
     isOwnable: false,
-    network: "sepolia",
-    expectations: [{ method: { name: "getChainlinkDataFeedLatestAnswer"} }],
+    network: "fuji",
+    expectations: [{ method: { name: "router"}}],
   },
-  "Endereço CrossDestinationMinter": {
-    contractName: "CrossDestinationMinter",
+  "CrossSourceMinterMumbai address": {
+    contractName: "CrossSourceMinter",
     isOwnable: false,
-    network: "sepolia",
-    expectations: [{ method: { name: "getRouter"} }],
+    network: "mumbai",
+    expectations: [{ method: { name: "router"}}, { method: { name: "linkToken"}}],
   },
-  "Endereço do Smart Contract WeatherFunctions": {
+  // "NFT Runners address": {
+  //   contractName: "Runners",
+  //   isOwnable: false,
+  //   network: "fuji",
+  //   expectations: [{ method: { name: "lastRequestId"}}],
+  // },
+  // "GettingStartedFunctionsConsumer address": {
+  //   contractName: "GettingStartedFunctionsConsumer",
+  //   isOwnable: false,
+  //   network: "fuji",
+  //   expectations: [{ method: { name: "character"}}],
+  // },
+  "Your transaction in the Bootcamp's WeatherFunctions": {
     contractName: "WeatherFunctions",
     isOwnable: false,
     network: "fuji",
     expectations: [{ method: { name: "subscriptionId"}}],
-  },
-  "Endereço do Smart Contract TemperatureFunctions": {
-    contractName: "TemperatureFunctions",
-    isOwnable: false,
-    network: "fuji",
-    expectations: [{ method: { name: "s_subscriptionId"}}],
-  },
-  "Endereço NFT Runners": {
-    contractName: "Runners",
-    isOwnable: false,
-    network: "fuji",
-    expectations: [{ method: { name: "lastRequestId"}}],
-  },
-  "Endereço do Smart Contract GettingStartedFunctionsConsumer": {
-    contractName: "GettingStartedFunctionsConsumer",
-    isOwnable: false,
-    network: "fuji",
-    expectations: [{ method: { name: "character"}}],
-  },
-  "Endereço CrossSourceMinter": {
-    contractName: "CrossSourceMinter",
-    isOwnable: false,
-    network: "fuji",
-    expectations: [{ method: { name: "router"}}, { method: { name: "linkToken"}}],
-  },
-  "Endereço CCIPTokenSenderFujiSepolia": {
-    contractName: "CCIPTokenSenderFujiSepolia",
-    isOwnable: false,
-    network: "fuji",
-    expectations: [{ method: { name: "owner" } }],
   },
 };

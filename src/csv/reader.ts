@@ -2,9 +2,9 @@ import csvToJson from "csvtojson";
 import { WorkshopAnswer, WorkshopFeedback } from "../types";
 
 export async function getCVSObjectApply(): Promise<WorkshopAnswer[]> {
-  return csvToJson({ trim: true }).fromFile("./Bootcamp_apply.csv");
+  return csvToJson({ trim: true, delimiter: "," }).fromFile("./Bootcamp 2024-04 - Amostra.csv");
 }
 
 export async function getCVSObjectFeedback(): Promise<WorkshopFeedback[]> {
-  return csvToJson({ trim: true }).fromFile("./feedback.csv");
+  return csvToJson({ trim: true, delimiter: "," }).fromFile("./feedback.csv");
 }

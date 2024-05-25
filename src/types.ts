@@ -1,7 +1,7 @@
 export type Result = string | number;
 export type Method = {
   name: string;
-  args?: string[];
+  args?: string[] | number[];
 };
 
 export type Functions = Record<string, (...args: string[]) => Promise<Result>>;
@@ -28,7 +28,6 @@ export interface Ownable {
  * or something entirely different
  */
 export interface Wallet {
-  name: string;
   address: string;
 }
 

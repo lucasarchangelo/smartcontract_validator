@@ -10,15 +10,15 @@ async function runValidation() {
   const csvAnswers = await getCVSObjectApply();
   let result: WorkshopFeedback[] = [];
 
-  if (hre.network.name === "fuji") {
+  if (hre.network.name === "fuji" || hre.network.name === "mumbai") {
     result = await getCVSObjectFeedback();
   }
 
   for await (const answer of csvAnswers) {
-    console.info(`Validating user ${answer["Email Address"]} with wallet ${answer["Endereço Account1 da Carteira"]}`);
-    let feedback = result.find((item) => item.name === answer["Email Address"]) || workshopFeedbackFromAnswer(answer);
+    console.info(`Validating user ${answer["Wallet Account1 Address"]}`);
+    let feedback = result.find((item) => item.address === answer["Wallet Account1 Address"]) || workshopFeedbackFromAnswer(answer);
     await validateContract(answer, feedback);
-    if (hre.network.name !== "fuji") {
+    if (hre.network.name !== "fuji" && hre.network.name !== "mumbai") {
       result.push(feedback);
     }
   }
