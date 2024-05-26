@@ -8,7 +8,8 @@
     "deploy_mumbai": "npx hardhat deploy --network mumbai",
     "validate_csv_sepolia": "npx hardhat run src/index.ts --network sepolia",
     "validate_csv_fuji": "npx hardhat run src/index.ts --network fuji",
-    "validate_csv_mumbai": "npx hardhat run src/index.ts --network mumbai"
+    "validate_csv_mumbai": "npx hardhat run src/index.ts --network mumbai",
+    "validate_csv_localhost": "npx hardhat run src/index.ts --network localhost"
   },
   "repository": {
     "type": "git",

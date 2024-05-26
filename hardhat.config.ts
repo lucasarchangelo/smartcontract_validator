@@ -41,6 +41,13 @@ const config: HardhatUserConfig = {
       },
       chainId: 43113
     },
+    localhost: {
+      url: "http://127.0.0.1:8545/",
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
+      chainId: 31337
+    },
     matic: {
       url: MATIC_RPC_URL !== undefined ? MATIC_RPC_URL : '',
       accounts: {
